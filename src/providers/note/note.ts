@@ -28,4 +28,8 @@ export class NoteProvider {
     return this.notes.filter( (e, i) => { return e.id == id })[0];
   }
 
+  createNote(note){
+    this.notes.push(note);
+  }
+
 }

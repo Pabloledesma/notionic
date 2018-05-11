@@ -24,7 +24,16 @@ export class DetailPage {
     public navParams: NavParams
   )
   {
-    this.note = noteProvider.getNote( navParams.get('note') );
+    let id = navParams.get('note');
+    if(id != 0)
+    this.note = noteProvider.getNote(id);
+  }
+
+  createNote(note){
+    note.id = Date.now();
+    this.noteProvider.createNote(note);
+    alert('Insert note success!');
+    this.navCtrl.pop();
   }
 
   ionViewDidLoad() {

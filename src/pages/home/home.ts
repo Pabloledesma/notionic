@@ -15,6 +15,9 @@ export class HomePage {
    this.notes = noteProvider.getNotes();
   }
 
+  createNote(){
+    this.navCtrl.push(DetailPage, { note: 0 });
+  }
 
   noteSelected(note){
     this.navCtrl.push(DetailPage, {

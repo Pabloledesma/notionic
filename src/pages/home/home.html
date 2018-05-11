@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Notionic
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item ion-item *ngFor="let note of notes" (click)="noteSelected(note)">
+      {{ note.title }}
+    </ion-item>  
+  </ion-list>
+</ion-content>

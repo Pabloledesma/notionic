@@ -30,5 +30,6 @@
 
     <div padding>
       <button ion-button block (click)=createNote(note)>Create note</button>
+      <button *ngIf="id != 0" ion-button block color="danger" (click)=deleteNote()>Delete note</button>
     </div>
 </ion-content>

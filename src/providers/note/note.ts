@@ -32,4 +32,20 @@ export class NoteProvider {
     this.notes.push(note);
   }
 
+  updateNote(note){
+    for(let i = 0; i < this.notes.length; i++){
+      if(this.notes[i].id == note.id){
+        this.notes[i] = note;
+      }
+    }
+  }
+
+  deleteNote(note){
+    for(let i = 0; i < this.notes.length; i++){
+      if(this.notes[i].id == note.id){
+        this.notes.splice(i, 1);
+      }
+    }
+  }
+
 }

@@ -16,7 +16,8 @@ import { NoteProvider } from '../../providers/note/note';
 })
 export class DetailPage {
 
-  note = {id: null, title: null, description: null};
+  public note = {id: null, title: null, description: null};
+  public id = 0;
 
   constructor(
     public noteProvider: NoteProvider, 
@@ -24,15 +25,32 @@ export class DetailPage {
     public navParams: NavParams
   )
   {
-    let id = navParams.get('note');
-    if(id != 0)
-    this.note = noteProvider.getNote(id);
+    this.id = navParams.get('note');
+    if(this.id != 0)
+    this.note = noteProvider.getNote(this.id);
   }
 
   createNote(note){
-    note.id = Date.now();
-    this.noteProvider.createNote(note);
-    alert('Insert note success!');
+
+    if(note.id != 0){
+
+      this.noteProvider.updateNote(note);
+      alert('Update note successfully!');
+    
+    } else {
+
+      note.id = Date.now();
+      this.noteProvider.createNote(note);
+      alert('Note created!!');
+    
+    }
+    
+    this.navCtrl.pop();
+  }
+
+  deleteNote(){
+    this.noteProvider.deleteNote(this.note);
+    alert('Note deleted!');
     this.navCtrl.pop();
   }
 
